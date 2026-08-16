@@ -6,11 +6,9 @@ public class Automovil extends Vehiculos {
 
     public Automovil(String placa, String modelo, String marca, double precioBase, int año) {
         super(placa, modelo, marca, precioBase, año);
-        if(!setNumeroPuertas(numeroPuertas) || !setTipoCombustible(tipoCombustible)){
-            throw new IllegalArgumentException("Parametros invalido para Automovil.");
-        }
+        this.numeroPuertas = numeroPuertas;
+        this.tipoCombustible = tipoCombustible;
     }
-
 
     public int getNumeroPuertas() {
         return numeroPuertas;
@@ -35,5 +33,9 @@ public class Automovil extends Vehiculos {
         }
         System.out.println("Error: El combustible debe ser Gasolina, Disel o Electrico.");
         return false;
+    }
+    @Override
+    public double calcularPrecioFinal() {
+        return 0;
     }
 }
