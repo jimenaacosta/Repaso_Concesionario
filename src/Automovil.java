@@ -2,7 +2,7 @@ public class Automovil extends Vehiculos {
 
     private int numeroPuertas;
     private String tipoCombustible;
-
+git
 
     public Automovil(String placa, String modelo, String marca, int año, double precioBase) {
         super(placa, modelo, marca,año, precioBase);
@@ -35,5 +35,8 @@ public class Automovil extends Vehiculos {
         }
         System.out.println("Error: El combustible debe ser Gasolina, Disel o Electrico.");
         return false;
+    }
+    calcularPrecioFinal(){
+
     }
 }
