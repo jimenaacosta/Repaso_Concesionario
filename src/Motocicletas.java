@@ -1,8 +1,8 @@
 public class Motocicletas extends Vehiculos{
     private int cilindraje;
 
-    public Motocicletas(int cilindraje,String placa, String marca, String modelo, int año, double precioBase) {
-        super(placa, marca, modelo, año, precioBase);
+    public Motocicletas(String placa, String modelo, String marca, double precioBase, int año, int cilindraje) {
+        super(placa, marca, modelo, precioBase, año);
         if(cilindraje>0)this.cilindraje = cilindraje;
         else{System.out.println("El cilindraje debe ser mayor a 0");}
     }
@@ -16,6 +16,6 @@ public class Motocicletas extends Vehiculos{
     }
 
     public String mostrarFicha() {
-        return super.mostrarFicha() + "tipo : Motocicleta , Cilindraje : "+cilindraje;
+        return super.mostrarFicha() + " tipo : Motocicleta , Cilindraje : "+cilindraje +"cc";
     }
 }

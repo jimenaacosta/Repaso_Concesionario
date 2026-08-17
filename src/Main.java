@@ -13,10 +13,11 @@ public class Main {
         }
     }
     public static void listarInventario(ArrayList<Vehiculos> inventario) {
-        System.out.println("=== Inventario Automovil S.A.S. ===");
+        System.out.println("Inventario Automoviles");
         for (Vehiculos v : inventario) {
             System.out.println(v.mostrarFicha());
-            System.out.println(String.format("Precio final:$%,.0f", v.calcularPrecioFinal()));
+            System.out.println(String.format("Precio final: $%,.0f", v.calcularPrecioFinal()));
+            System.out.println("  ");
         }
     }
     public static double calcularValorTotalInventario(ArrayList<Vehiculos> inventario) {
@@ -37,31 +38,40 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Vehiculos>inventario = new ArrayList<>();
 
-
-        agregarVehiculo(inventario, new Automovil("DAM982", "3", "Chervrolet",  38000000, 2023, 4, "Gasolina"));
-        agregarVehiculo(inventario, new Automovil("SOF754", "3", "Mazda",  87000000,  2025, 4, "Electrico"));
-
-        agregarVehiculo(inventario,new CamionCarga("CAT234", "T800", "KIA", 170000000, 2024, 12.0));
+        //se agregan dos automoviles
+        agregarVehiculo(inventario, new Automovil("QQU982", "3", "Tesla",  120900000, 2025, 4, "Elelectrico"));
+        agregarVehiculo(inventario, new Automovil("BKT754", "3", "Mazda",  87000000,  2020, 4, "Gasolina"));
+        //se agregan dos camiones
+        agregarVehiculo(inventario,new CamionCarga("CKT234", "T800", "KIA", 170000000, 2024, 12.0));
         agregarVehiculo(inventario, new CamionCarga("MAA738", "LHR", "Forland", 88990000, 2023, 5.5) );
+        //se agregan dos motocicletas
+        agregarVehiculo(inventario, new Motocicletas("NXM18F", "MT-09", "Yamaha", 45000000, 2024, 890));
+        agregarVehiculo(inventario, new Motocicletas("SUB45H", "Gixxer 250", "Suzuki", 14500000, 2023, 249));
+
         listarInventario(inventario);
 
+
         double total = calcularValorTotalInventario(inventario);
-        System.out.println(String.format("VALOR DEL INVENTARIO: $%.2f \n", total));
+        System.out.println(String.format("Valor total de inventario: $%,.0f \n", total));
+        System.out.println("  ");
 
 
-        System.out.println("==BUSCAR VEHICULO POR PLACA (DAM982)==");
-        Vehiculos encontrado = buscarPorPlaca(inventario, "CAT234");
+        System.out.println("--Buscar vehiculo por placa: ");
+        Vehiculos encontrado = buscarPorPlaca(inventario, "QQU982");
         if(encontrado != null) {
-            System.out.println(String.format("Precio Final: $%.2f", encontrado.calcularPrecioFinal()));
+            System.out.println(encontrado.mostrarFicha());
+            System.out.println(String.format("Precio Final: $%,.0f", encontrado.calcularPrecioFinal()));
+            System.out.println("  ");
         } else {
             System.out.println("Vehiculo no encontrado.");
         }
-        System.out.println("==PRUEBA DE ENCAPSULAMIENTO==");
+
+        System.out.println("--Prueba de validacion");
         try {
-            Vehiculos vehiculosInvalido = new Automovil("ERR00", "X", "Ficticio", -5000000, 1500, 4, "Gasolina");
+            Vehiculos vehiculosInvalido = new Automovil("AXY753", "X", "ferrari", 0, 1500, 8, "Hibrido");
             agregarVehiculo(inventario, vehiculosInvalido);
         }catch (Exception e) {
-            System.out.println("Error detectado: El encasulamiento protegido el objeto invalidos.");
+            System.out.println("Error de validacion, objeto invalidos.");
         }
     }
 

@@ -10,7 +10,7 @@ public class Automovil extends Vehiculos {
     private int numeroPuertas;
     private String tipoCombustible;
 
-    public Automovil(String placa, String modelo, String marca, double precioBase, int año, int i, String electrico) {
+    public Automovil(String placa, String modelo, String marca, double precioBase, int año, int numeroPuertas, String tipoCombustible) {
         super(placa, modelo, marca, precioBase, año);
         this.numeroPuertas = numeroPuertas;
         this.tipoCombustible = tipoCombustible;
@@ -24,9 +24,10 @@ public class Automovil extends Vehiculos {
         if(numeroPuertas >= 2 && numeroPuertas <= 5) {
             this.numeroPuertas = numeroPuertas;
             return true;
-        }
-        System.out.println("Error: El numero de puertas debe estar entre 2 y 5.");
+        }else {
+            System.out.println("Error: El numero de puertas debe estar entre 2 y 5.");
         return false;
+        }
     }
 
     public String getTipoCombustible() {
@@ -44,7 +45,11 @@ public class Automovil extends Vehiculos {
     public double calcularPrecioFinal() {
         if (tipoCombustible != null && tipoCombustible.equalsIgnoreCase("Electrico")){
             return precioBase * 0.90;
+        }else{
+            return precioBase * 1.08;
         }
-        return 0;
+    }
+    public String mostrarFicha() {
+       return super.mostrarFicha() + " | Tipo: Automóvil | Puertas: " + numeroPuertas + " | Combustible: " + tipoCombustible;
     }
 }

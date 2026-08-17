@@ -21,15 +21,18 @@ public class CamionCarga extends Vehiculos {
             this.capacidadToneladas = capacidadToneladas;
             return true;
         }
-        System.out.println("Error: La capacidad debe ser mayor a 0.");
+        System.out.println("Error: La capacidad debe ser mayor a 0");
         return false;
     }
 
-    @Override
     public double calcularPrecioFinal() {
         if(capacidadToneladas > 10.0) {
             return precioBase * 1.05;
         }
         return precioBase;
+    }
+
+    public String mostrarFicha() {
+        return super.mostrarFicha() + " tipo : Camion de carga , Capacidad de carga : "+capacidadToneladas +"T";
     }
 }
