@@ -1,3 +1,9 @@
+/* Clase que representa las motocicletas del sistema de inventario
+    Principios de POO aplicados:
+ - Herencia: se extiende de la superclase Vehiculos, reutilizando sus atributos y métodos
+ - Encapsulaamiento: Tiene sus atributos privados y controlados
+ */
+
 public class Motocicletas extends Vehiculos{
     private int cilindraje;
 
