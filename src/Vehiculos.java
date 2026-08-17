@@ -12,6 +12,12 @@ public abstract class Vehiculos {
         this.precioBase = precioBase;
         this.año = año;
     }
+    public abstract double calcularPrecioFinal();
+
+    public String mostrarFicha() {
+        return  String.format("Placa: %s | Modelo: %s | Marca: %s | Año: %d | Precio Base: $%.2f", placa, modelo, marca, año, precioBase);
+    }
+
 
     public String getPlaca() {
         return placa;
