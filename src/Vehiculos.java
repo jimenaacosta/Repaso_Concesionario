@@ -1,3 +1,9 @@
+/*** Clase abstracta que representa la entidad base para la gestión de vehículos.
+ *                              Principios de POO aplicados:
+ * - Abstracción: Define los atributos generales y la plantilla del comportamiento (metodo abstracto calcularPrecioFinal) que deben cumplir las subclases.
+ * - Encapsulamiento: Utiliza modificadores de acceso (protected/private) y métodos
+ *   getters y setters con validaciones para proteger los atributos de estados inválidos.*/
+
 public abstract class Vehiculos {
     protected String placa;
     protected String modelo;
@@ -11,7 +17,21 @@ public abstract class Vehiculos {
         this.marca = marca;
         this.precioBase = precioBase;
         this.año = año;
+
+        if (precioBase <= 0)  {
+            System.out.println("Error: El precio base deb ser mayor a 0.");
+            this.precioBase = 1;
+        } else {
+            this.precioBase = precioBase;
+        }
+
+        if(año <1900) {
+            System.out.println("Error: El año del vehiculo no es valido.");
+            this.año = año;
+        }
     }
+
+
     public abstract double calcularPrecioFinal();
 
     public String mostrarFicha() {
@@ -48,7 +68,11 @@ public abstract class Vehiculos {
     }
 
     public void setPrecioBase(double precioBase) {
-        this.precioBase = precioBase;
+        if(precioBase <= 0 ) {
+            System.out.println("Error: No se puede asignario un precio base negativo o cero.");
+        } else {
+            this.precioBase = precioBase;
+        }
     }
 
     public int getAño() {
@@ -56,6 +80,11 @@ public abstract class Vehiculos {
     }
 
     public void setAño(int año) {
-        this.año = año;
+        if(año <1900) {
+            System.out.println("Erros: El año " + año + "no es valido. ");
+        } else {
+            this.año = año;
+        }
+
     }
 }

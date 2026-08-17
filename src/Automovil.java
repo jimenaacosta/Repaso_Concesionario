@@ -1,3 +1,10 @@
+/*** Clase concreta que representa un automóvil dentro del sistema del concesionario.
+ *                      Principios de POO aplicados:
+ * - HERENCIA: Extiende de la superclase Vehiculos, reutilizando sus atributos y métodos.
+ * - POLIMORFISMO: Sobrescribe (@Override) el métodotodo abstracto calcularPrecioFinal() para implementar la regla de negocio específica de los automóviles (descuento por combustible).
+ * - ENCAPSULAMIENTO: Mantiene sus atributos propios como privados y controlados.
+ */
+
 public class Automovil extends Vehiculos {
 
     private int numeroPuertas;
@@ -36,6 +43,9 @@ public class Automovil extends Vehiculos {
     }
     @Override
     public double calcularPrecioFinal() {
-        return 0;
+        if (tipoCombustible != null && tipoCombustible.equalsIgnoreCase("Electrico")){
+            return precioBase * 0.90;
+        }
+        return precioBase;
     }
 }

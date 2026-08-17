@@ -1,3 +1,9 @@
+/**Clase concreta que preresenta un camion de carga del concesionario
+ *                      Princiios de  POO aplicados:
+ * -HERENCIA: Reutiliza la estructura general de la superclase Vehiculos.
+ * -POLIMORFISMO: Redefine el metodo calcularPrecioFinal()para plicar recargos adicionales basados en la capacidad de tonelaje
+ * -ENCAPSULAMIENTO: Protege el atributo propio capacidadToneladas mediante visibilidad privada.*/
+
 public class CamionCarga extends Vehiculos {
     private double capacidadToneladas;
 
@@ -21,6 +27,9 @@ public class CamionCarga extends Vehiculos {
 
     @Override
     public double calcularPrecioFinal() {
-        return 0;
+        if(capacidadToneladas > 10.0) {
+            return precioBase * 1.05;
+        }
+        return precioBase;
     }
 }
